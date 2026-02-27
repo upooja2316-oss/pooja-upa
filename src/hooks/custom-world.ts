@@ -20,6 +20,7 @@ export class CustomWorld extends World {
    */
   initializePageObjects() {
     if (this.page) {
+      
       this.loginPage = new LoginPage(this.page);
       this.dashboardPage = new DashboardPage(this.page);
     }
