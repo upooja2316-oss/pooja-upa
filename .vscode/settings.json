@@ -1,0 +1,8 @@
+{
+  "cucumber.glue": ["src/test/steps/**/*.ts", "src/hooks/**/*.ts"],
+  "cucumber.features": ["src/test/features/**/*.feature"],
+  "cucumber.parameterTypes": [],
+  "[feature]": {
+    "editor.defaultFormatter": "mocked.cucumber-language-server"
+  }
+}

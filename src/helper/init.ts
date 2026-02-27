@@ -1,8 +1,10 @@
+require('dotenv').config();
 const fs = require('fs-extra');
 
 try {
-  fs.ensureDir('test-results');
-  fs.emptyDir('test-results');
+  const reportDir = process.env.REPORT_DIR || 'test-results';
+  fs.ensureDir(reportDir);
+  fs.emptyDir(reportDir);
 } catch (error) {
   console.log('Folder not created! + error');
 }

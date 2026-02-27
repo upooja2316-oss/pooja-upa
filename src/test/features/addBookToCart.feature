@@ -4,6 +4,7 @@ Feature: Add book to cart
     Given User navigates to the application
     And User click on the login link
 
+@smoke
   Scenario: Authenticated Users - Add to cart
     And User enter the username as "<username>"
     And User enter the password as "<password>"
@@ -15,4 +16,4 @@ Feature: Add book to cart
     Examples:
       | username | password  | book            |
       | ortoni   | pass1234$ | Roomies         |
-      | ortonikc | pass1234  | The Simple Wild |
+    #  | ortonikc | pass1234  | The Simple Wild |

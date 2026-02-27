@@ -11,6 +11,10 @@
     "test": "cucumber-js test || true",
     "posttest": "npx ts-node src/helper/report.ts",
     "test:failed": "cucumber-js -p rerun @rerun.txt",
+    "test:login": "npx cucumber-js test --tags \"@login\"",
+    "test:smoke": "npx cucumber-js test --tags \"@smoke\"",
+       "test:regression": "npx cucumber-js test --tags \"@regression\"",
+    "test:tag": "npx cucumber-js test --tags",
     "prettier": "npx prettier --write .",
     "lint:check": "eslint . --max-warnings=0",
     "lint:fix": "eslint . --fix"
@@ -19,16 +23,20 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@cucumber/cucumber": "^9.4.0",
+    "@cucumber/cucumber": "^9.6.0",
+    "@eslint/js": "^9.39.2",
     "@playwright/test": "^1.43.1",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
-    "eslint": "^8.47.0",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react": "^7.37.5",
     "fs-extra": "^11.2.0",
+    "globals": "^17.0.0",
     "multiple-cucumber-html-reporter": "^3.5.0",
     "prettier": "3.0.2",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.2",
+    "typescript-eslint": "^8.53.0",
+    "dotenv": "^16.1.4"
   }
 }

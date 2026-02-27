@@ -1,47 +1,73 @@
 import { Given, When, Then, setDefaultTimeout } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
-import { pageFixture } from '../../hooks/pageFixture';
+import { env } from '../config';
+import { CustomWorld } from '../../hooks/custom-world';
 
 setDefaultTimeout(60 * 1000 * 2);
 
-Given('User navigates to the application', async function () {
-  await pageFixture.page.goto('https://bookcart.azurewebsites.net/');
-});
+Given(
+  'User navigates to the application',
+  async function (this: CustomWorld) {
+    await this.page.goto(env.BASE_URL);
+    await this.page.waitForLoadState();
+  },
+);
 
-Given('User click on the login link', async function () {
-  await pageFixture.page.locator('//span[text()="Login"]').click();
-  // await pageFixture.page.locator('.mat-focus-indicator.mat-button.mat-button-base.ng-star-inserted').click();
-});
+Given(
+  'User click on the login link',
+  async function (this: CustomWorld) {
+    await this.loginPage.clickLoginLink();  
+  },
+);
 
-Given('User enter the username as {string}', async function (username) {
-  await pageFixture.page
-    .locator('input[formcontrolname="username"]')
-    .type(username);
-});
+Given(
+  'User enter the username as {string}',
+  async function (this: CustomWorld, username: string) {
+    await this.loginPage.enterUsername(username);
+  },
+);
 
-Given('User enter the password as {string}', async function (password) {
-  await pageFixture.page
-    .locator('input[formcontrolname="password"]')
-    .type(password);
-});
+Given(
+  'User enter the phone no. {string}',
+  async function (this: CustomWorld, phoneNo: string) {
+    await this.loginPage.enterUsername(phoneNo);
+  },
+);
 
-When('User click on the login button', async function () {
-  await pageFixture.page.locator('button[color="primary"]').click();
-  // await pageFixture.page.locator('.mat-focus-indicator.mat-raised-button.mat-button-base.mat-primary').click();
-  await pageFixture.page.waitForLoadState();
-  await pageFixture.page.waitForTimeout(2000);
-});
+//<input type="email" id="ap_email_login" autocomplete="username" name="email" class="a-input-text" data-tab-layout-weblab-treatment="" aria-label="Enter mobile number or email">
 
-Then('Login should be success', async function () {
-  const textMessage = await pageFixture.page
-    .locator(
-      '//button[contains(@class,"mat-focus-indicator mat-menu-trigger")]//span[1]',
-    )
-    .textContent();
-  console.log('Username: ' + textMessage);
-});
+Given(
+  'User enter the password as {string}',
+  async function (this: CustomWorld, password: string) {
+    await this.loginPage.enterPassword(password);
+  },
+);
 
-When('Login should fail', async function () {
-  const errorMessage = pageFixture.page.locator('mat-error[role="alert"]');
-  await expect(errorMessage).toBeVisible();
-});
+Given(
+  'User click on the login button',
+  async function (this: CustomWorld) {
+    await this.loginPage.clickLoginButton();
+  },
+);
+
+Given(
+  'Login should be success',
+  async function (this: CustomWorld) {
+    const username = await this.loginPage.getLoggedInUserName();
+    console.log('Logged in as: ' + username);
+    await this.loginPage.waitForPageLoad();
+    expect(username).toBeTruthy();
+  },
+);
+
+Given(
+  'Login should fail',
+  async function (this: CustomWorld) {
+    const isErrorVisible = await this.loginPage.isErrorMessageVisible();
+    expect(isErrorVisible).toBe(true);
+  },
+);
+
+Given('User enter the phone no. {string}', (s: string) => {
+  // Write code here that turns the phrase above into concrete actions
+})
