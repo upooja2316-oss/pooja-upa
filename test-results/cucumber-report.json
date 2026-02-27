@@ -1,0 +1,150 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "add-book-to-cart;authenticated-users---add-to-cart",
+        "keyword": "Scenario",
+        "line": 18,
+        "name": "Authenticated Users - Add to cart",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 349698791
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "User navigates to the application",
+            "match": {
+              "location": "src/test/steps/loginSteps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2035442916
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "User click on the login link",
+            "match": {
+              "location": "src/test/steps/loginSteps.ts:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 70232375
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "User enter the username as \"ortoni\"",
+            "match": {
+              "location": "src/test/steps/loginSteps.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 93122041
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "User enter the password as \"pass1234$\"",
+            "match": {
+              "location": "src/test/steps/loginSteps.ts:39"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14210208
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "User click on the login button",
+            "match": {
+              "location": "src/test/steps/loginSteps.ts:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35710166
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "user search for a \"Roomies\"",
+            "match": {
+              "location": "src/test/steps/addBookToCartSteps.ts:7"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 35014297582,
+              "error_message": "locator.click: Timeout 30000ms exceeded.\nCall log:\n  \u001b[2m- waiting for locator('mat-option[role=\"option\"] span')\u001b[22m\n\n    at DashboardPage.searchBook (/Users/poojaupadhyay/playwright-cucumber-bdd-typescript/src/test/page-objects/dashboard-page.ts:94:54)\n    at async CustomWorld.<anonymous> (/Users/poojaupadhyay/playwright-cucumber-bdd-typescript/src/test/steps/addBookToCartSteps.ts:10:5)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "user add the book to the cart",
+            "match": {
+              "location": "src/test/steps/addBookToCartSteps.ts:14"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "the cart badge should get updated",
+            "match": {
+              "location": "src/test/steps/addBookToCartSteps.ts:21"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 80373791
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 7
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "add-book-to-cart",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Add book to cart",
+    "tags": [],
+    "uri": "src/test/features/addBookToCart.feature"
+  }
+]
